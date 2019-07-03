@@ -1,50 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
-fetch(`https://developer.nps.gov/api/v1/parks?stateCode=tx&api_key=${process.env.REACT_APP_API_KEY}`)
-  .then((res) => { return res.json() })
-  .then((data) => {
-
-    console.log(data)
-    let result = `<h2> National Parks in Texas </h2>`;
-
-    data.data.forEach((park) => {
-      const {
-        id,
-        description,
-        designation,
-        directionsInfo,
-        directionsUrl,
-        fullName,
-        latLong,
-        name,
-        parkCode,
-        states,
-        url,
-        weatherInfo
-      } = park
-      result +=
-        `<div>
-             <p>${id}</p>
-             <p>${description}</p>
-             <p>${designation}</p>
-             <p>${directionsInfo}</p>
-             <p>${directionsUrl}</p>
-             <p>${fullName}</p>
-             <p>${latLong}</p>
-             <p>${name}</p>
-             <p>${parkCode}</p>
-             <p>${states}</p>
-             <p>${url}</p>
-             <p>${weatherInfo}</p>
-              </div>`;
-    });
-    console.log(result)
-  })
-
 function App() {
-  const [parkState, updateParkState] = useState('Pick a state');
-  const [parks, updateParks] = useState(['park1', 'park2']);
+  const [parkState, updateParkState] = useState('tx');
+  const [parks, updateParks] = useState(null);
+
+  useEffect(() => {
+    const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=tx&api_key=${process.env.REACT_APP_API_KEY}`
+    console.log(parksUrl)
+     axios.get(parksUrl).then(response => {
+       updateParks(response.data.data)
+     })
+  }, [parkState])
 
   return (
     <div className="App">
@@ -68,8 +36,29 @@ function App() {
           <li>Display campground information for a park</li>
           <li>Use Theme UI to style the site</li>
         </ul>
-        <p>{parkState}</p>
-        <p>{parks}</p>
+        <label htmlFor="search">Search State for Parks</label>
+        <input type="text"
+         value={parkState}
+         onChange={e => updateParkState(e.target.value)}/>
+        {!parks ? <p>Select a state to find parks to explore...</p> : <table border='2'>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Directions</th>
+              <th>Lat Long</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parks.map(park => (
+              <tr key={park.id}>
+                <td>{park.description}</td>
+                <td>{park.directionsInfo}</td>
+                <td>{park.latLong}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      }
       </header>
     </div>
   );
