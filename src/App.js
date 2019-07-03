@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 fetch(`https://developer.nps.gov/api/v1/parks?stateCode=tx&api_key=${process.env.REACT_APP_API_KEY}`)
@@ -43,6 +43,9 @@ fetch(`https://developer.nps.gov/api/v1/parks?stateCode=tx&api_key=${process.env
   })
 
 function App() {
+  const [parkState, updateParkState] = useState('Pick a state');
+  const [parks, updateParks] = useState(['park1', 'park2']);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -65,6 +68,8 @@ function App() {
           <li>Display campground information for a park</li>
           <li>Use Theme UI to style the site</li>
         </ul>
+        <p>{parkState}</p>
+        <p>{parks}</p>
       </header>
     </div>
   );
