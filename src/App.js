@@ -7,9 +7,9 @@ function App() {
   const [parks, updateParks] = useState(null);
 
   useEffect(() => {
-    const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=tx&api_key=${
+    const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${
       process.env.REACT_APP_API_KEY
-    }`;
+      }`;
     console.log(parksUrl);
     axios.get(parksUrl).then(response => {
       updateParks(response.data.data);
@@ -38,58 +38,58 @@ function App() {
           <li>Display campground information for a park</li>
           <li>Use Theme UI to style the site</li>
         </ul>
-        <label htmlFor="search">Search State for Parks</label>
-        <input
-          type="text"
-          value={parkState}
-          onChange={e => updateParkState(e.target.value)}
-        />
+        <p>Show Me The Parks In {parkState.toUpperCase()}</p>
+        <button onClick={e => updateParkState('la')}>LA</button>
+        <button onClick={e => updateParkState('ok')}>OK</button>
+        <button onClick={e => updateParkState('tx')}>TX</button>
+        <button onClick={e => updateParkState('nm')}>NM</button>
+        <button onClick={e => updateParkState('ak')}>AK</button>
         {!parks ? (
           <p>Select a state to find parks to explore...</p>
         ) : (
-          <table
-            style={{
-              marginBottom: "7px",
-              fontSize: "14px",
-              border: "2",
-              textAlign: "left"
-            }}
-          >
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Directions</th>
-                <th>Lat Long</th>
-              </tr>
-            </thead>
-            <tbody>
-              {parks.map(
-                ({
-                  id,
-                  description,
-                  designation,
-                  directionsInfo,
-                  directionsUrl,
-                  fullName,
-                  latLong,
-                  name,
-                  parkCode,
-                  states,
-                  url,
-                  weatherInfo
-                }) => (
-                  <tr key={id}>
-                    <td>{name}</td>
-                    <td>{description}</td>
-                    <td>{directionsInfo}</td>
-                    <td>{latLong}</td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
-        )}
+            <table
+              style={{
+                marginBottom: "7px",
+                fontSize: "14px",
+                border: "2",
+                textAlign: "left"
+              }}
+            >
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Directions</th>
+                  <th>Lat Long</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parks.map(
+                  ({
+                    id,
+                    description,
+                    designation,
+                    directionsInfo,
+                    directionsUrl,
+                    fullName,
+                    latLong,
+                    name,
+                    parkCode,
+                    states,
+                    url,
+                    weatherInfo
+                  }) => (
+                      <tr key={id}>
+                        <td>{name}</td>
+                        <td>{description}</td>
+                        <td>{directionsInfo}</td>
+                        <td>{latLong}</td>
+                      </tr>
+                    )
+                )}
+              </tbody>
+            </table>
+          )}
       </header>
     </div>
   );
