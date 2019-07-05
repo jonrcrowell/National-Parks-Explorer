@@ -41,16 +41,7 @@ function App() {
         </ul>
         <p>Show Me The Parks In {parkState.toUpperCase()}</p>
         <div className="parent">
-          <button onClick={e => updateParkState('LA')}>LA</button>
-          <button onClick={e => updateParkState('OK')}>OK</button>
-          <button onClick={e => updateParkState('TX')}>TX</button>
-          <button onClick={e => updateParkState('NM')}>NM</button>
-          <button onClick={e => updateParkState('AR')}>AR</button>
-          <button onClick={e => updateParkState('OH')}>OH</button>
-          <button onClick={e => updateParkState('VT')}>VT</button>
-          <button onClick={e => updateParkState('VA')}>VA</button>
-          <button onClick={e => updateParkState('FL')}>FL</button>
-          <button onClick={e => updateParkState('MI')}>MI</button>
+          {stateAbbreviations.map(ab => <button onClick={e => updateParkState(ab)}>{ab}</button>)}
         </div>
         {!parks ? (
           <p>Select a state to find parks to explore...</p>
