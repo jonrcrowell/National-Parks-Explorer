@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import stateAbbreviations from './stateAbbreviations'
+import Button from './components/Button'
+import Ul from './components/Ul'
 
 function App() {
   const [parkState, updateParkState] = useState("tx");
@@ -18,11 +20,11 @@ function App() {
   }, [parkState]);
 
   function handleParkStateClick(e, ab) {
-    // need to update park state
     // set button clicked to active
-    console.log(e.target);
+    e.target.active = true;
+    console.log(e.target)
+    updateParks(null);
     updateParkState(ab);
-    // onClick={e => updateParkState(ab)}>{ab}</button>)
   }
 
   return (
@@ -37,7 +39,7 @@ function App() {
         >
           National Park Service API Documentation
         </a>
-        <ul>
+        <Ul>
           {" "}
           To Do List:
           <li>Display a list of parks for a given state</li>
@@ -46,13 +48,13 @@ function App() {
           <li>Display visitor center information for a park</li>
           <li>Display campground information for a park</li>
           <li>Use Theme UI to style the site</li>
-        </ul>
+        </Ul>
         <p>Show Me The Parks In {parkState.toUpperCase()}</p>
         <div className="parent">
-          {stateAbbreviations.map(ab => <button key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</button>)}
+          {stateAbbreviations.map(ab => <Button key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</Button>)}
         </div>
         {!parks ? (
-          <p>Select a state to find parks to explore...</p>
+          <p>Searching for parks...</p>
         ) : (
             <table
               style={{
@@ -68,6 +70,7 @@ function App() {
                   <th>Description</th>
                   <th>Directions</th>
                   <th>Lat Long</th>
+                  <th>Weather Tips</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,6 +94,7 @@ function App() {
                         <td>{description}</td>
                         <td>{directionsInfo}</td>
                         <td>{latLong}</td>
+                        <td>{weatherInfo}</td>
                       </tr>
                     )
                 )}
