@@ -17,6 +17,14 @@ function App() {
     });
   }, [parkState]);
 
+  function handleParkStateClick(e, ab) {
+    // need to update park state
+    // set button clicked to active
+    console.log(e.target);
+    updateParkState(ab);
+    // onClick={e => updateParkState(ab)}>{ab}</button>)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -41,7 +49,7 @@ function App() {
         </ul>
         <p>Show Me The Parks In {parkState.toUpperCase()}</p>
         <div className="parent">
-          {stateAbbreviations.map(ab => <button onClick={e => updateParkState(ab)}>{ab}</button>)}
+          {stateAbbreviations.map(ab => <button key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</button>)}
         </div>
         {!parks ? (
           <p>Select a state to find parks to explore...</p>
