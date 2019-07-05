@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import stateAbbreviations from './stateAbbreviations'
 
 function App() {
   const [parkState, updateParkState] = useState("tx");
@@ -39,11 +40,18 @@ function App() {
           <li>Use Theme UI to style the site</li>
         </ul>
         <p>Show Me The Parks In {parkState.toUpperCase()}</p>
-        <button onClick={e => updateParkState('la')}>LA</button>
-        <button onClick={e => updateParkState('ok')}>OK</button>
-        <button onClick={e => updateParkState('tx')}>TX</button>
-        <button onClick={e => updateParkState('nm')}>NM</button>
-        <button onClick={e => updateParkState('ak')}>AK</button>
+        <div className="parent">
+          <button onClick={e => updateParkState('LA')}>LA</button>
+          <button onClick={e => updateParkState('OK')}>OK</button>
+          <button onClick={e => updateParkState('TX')}>TX</button>
+          <button onClick={e => updateParkState('NM')}>NM</button>
+          <button onClick={e => updateParkState('AR')}>AR</button>
+          <button onClick={e => updateParkState('OH')}>OH</button>
+          <button onClick={e => updateParkState('VT')}>VT</button>
+          <button onClick={e => updateParkState('VA')}>VA</button>
+          <button onClick={e => updateParkState('FL')}>FL</button>
+          <button onClick={e => updateParkState('MI')}>MI</button>
+        </div>
         {!parks ? (
           <p>Select a state to find parks to explore...</p>
         ) : (
