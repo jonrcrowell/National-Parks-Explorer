@@ -4,6 +4,7 @@ import "./App.css";
 import stateAbbreviations from './stateAbbreviations'
 import Button from './components/Button'
 import Ul from './components/Ul'
+import Park from './components/Park'
 
 function App() {
   const [parkState, updateParkState] = useState("tx");
@@ -39,7 +40,7 @@ function App() {
         <Ul>
           To Do List:
           <li style={{ textDecoration: "line-through" }}>Display a list of parks for a given state</li>
-          <li>Create a styled "park" card and display search results with a grid of cards</li>
+          <li style={{ textDecoration: "line-through" }}>Create a styled "park" card and display search results with a grid of cards</li>
           <li>Add routes</li>
           <li>Add navigation</li>
           <li>Indicate active state button</li>
@@ -58,50 +59,26 @@ function App() {
         {!parks ? (
           <p>Searching for parks...</p>
         ) : (
-            <table
-              style={{
-                marginBottom: "7px",
-                fontSize: "14px",
-                border: "2",
-                textAlign: "left"
-              }}
-            >
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Directions</th>
-                  <th>Lat Long</th>
-                  <th>Weather Tips</th>
-                </tr>
-              </thead>
-              <tbody>
-                {parks.map(
-                  ({
-                    id,
-                    description,
-                    designation,
-                    directionsInfo,
-                    directionsUrl,
-                    fullName,
-                    latLong,
-                    name,
-                    parkCode,
-                    states,
-                    url,
-                    weatherInfo
-                  }) => (
-                      <tr key={id}>
-                        <td>{name}</td>
-                        <td>{description}</td>
-                        <td>{directionsInfo}</td>
-                        <td>{latLong}</td>
-                        <td>{weatherInfo}</td>
-                      </tr>
-                    )
-                )}
-              </tbody>
-            </table>
+            <div className="parkGrid">
+              {parks.map(
+                ({
+                  id,
+                  description,
+                  designation,
+                  directionsInfo,
+                  directionsUrl,
+                  fullName,
+                  latLong,
+                  name,
+                  parkCode,
+                  states,
+                  url,
+                  weatherInfo
+                }) => (
+                    <Park key={id} name={name} description={description} directionsInfo={directionsInfo} latLong={latLong} weatherInfo={weatherInfo}></Park>
+                  )
+              )}
+            </div>
           )}
       </header>
     </div >
