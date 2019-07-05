@@ -52,32 +52,46 @@ function App() {
           <li>Allow user to specify "favorite" parks</li>
           <li>Create view for favorited parks</li>
         </Ul>
-        <p>Show Me The Parks In {parkState.toUpperCase()}</p>
         <div className="parent">
           {stateAbbreviations.map(ab => <Button active={false} key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</Button>)}
         </div>
         {!parks ? (
           <p>Searching for parks...</p>
         ) : (
-            <div className="parkGrid">
-              {parks.map(
-                ({
-                  id,
-                  description,
-                  designation,
-                  directionsInfo,
-                  directionsUrl,
-                  fullName,
-                  latLong,
-                  name,
-                  parkCode,
-                  states,
-                  url,
-                  weatherInfo
-                }) => (
-                    <Park key={id} name={name} description={description} directionsInfo={directionsInfo} latLong={latLong} weatherInfo={weatherInfo}></Park>
-                  )
-              )}
+            <div>
+              <p style={{ textAlign: "left", fontSize: ".5em" }}>There are {parks.length} National Parks in {parkState.toUpperCase()}</p>
+              <div className="parkGrid">
+                {parks.map(
+                  ({
+                    id,
+                    description,
+                    designation,
+                    directionsInfo,
+                    directionsUrl,
+                    fullName,
+                    latLong,
+                    name,
+                    parkCode,
+                    states,
+                    url,
+                    weatherInfo
+                  }) => (
+                      <Park key={id}
+                        description={description}
+                        designation={designation}
+                        directionsInfo={directionsInfo}
+                        directionsUrl={directionsUrl}
+                        fullName={fullName}
+                        latLong={latLong}
+                        name={name}
+                        parkCode={parkCode}
+                        states={states}
+                        url={url}
+                        weatherInfo={weatherInfo}
+                      ></Park>
+                    )
+                )}
+              </div>
             </div>
           )}
       </header>
