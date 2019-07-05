@@ -20,9 +20,6 @@ function App() {
   }, [parkState]);
 
   function handleParkStateClick(e, ab) {
-    // set button clicked to active
-    e.target.active = true;
-    console.log(e.target)
     updateParks(null);
     updateParkState(ab);
   }
@@ -40,18 +37,23 @@ function App() {
           National Park Service API Documentation
         </a>
         <Ul>
-          {" "}
           To Do List:
-          <li>Display a list of parks for a given state</li>
+          <li style={{ textDecoration: "line-through" }}>Display a list of parks for a given state</li>
+          <li>Create a styled "park" card and display search results with a grid of cards</li>
+          <li>Add routes</li>
+          <li>Add navigation</li>
+          <li>Indicate active state button</li>
           <li>Display the events for a park</li>
           <li>Display the lesson plans for a park</li>
           <li>Display visitor center information for a park</li>
           <li>Display campground information for a park</li>
           <li>Use Theme UI to style the site</li>
+          <li>Allow user to specify "favorite" parks</li>
+          <li>Create view for favorited parks</li>
         </Ul>
         <p>Show Me The Parks In {parkState.toUpperCase()}</p>
         <div className="parent">
-          {stateAbbreviations.map(ab => <Button key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</Button>)}
+          {stateAbbreviations.map(ab => <Button active={false} key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</Button>)}
         </div>
         {!parks ? (
           <p>Searching for parks...</p>
@@ -102,7 +104,7 @@ function App() {
             </table>
           )}
       </header>
-    </div>
+    </div >
   );
 }
 
