@@ -14,7 +14,6 @@ function App() {
     const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${
       process.env.REACT_APP_API_KEY
       }`;
-    console.log(parksUrl);
     axios.get(parksUrl).then(response => {
       updateParks(response.data.data);
     });
