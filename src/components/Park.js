@@ -16,7 +16,15 @@ function Park({
     weatherInfo
 }) {
     return (
-        <div style={{ fontSize: ".5em", width: "450px", textAlign: "left", border: "solid 1px white", borderRadius: ".25em", padding: "2em" }}>
+        <div style={{
+            fontSize: ".5em",
+            width: "450px",
+            textAlign: "left",
+            border: "solid 1px white",
+            borderRadius: ".25em",
+            padding: "2em",
+            backgroundColor: "hsl(172, 5%, 50%)"
+        }}>
             <h3>{name}</h3>
             <p>{designation}</p>
             <p>{description}</p>
