@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from 'styled-components'
 import "../App.css";
 import stateAbbreviations from '../stateAbbreviations'
 import Button from './Button'
 import Park from './Park'
+
+const Title = styled.p`
+    text-align: left;
+    font-size: .5em;
+    font-weight: 700;
+`
 
 function Explore() {
     const [parkState, updateParkState] = useState("tx");
@@ -36,7 +43,7 @@ function Explore() {
                         <p>Searching for parks...</p>
                     ) : (
                             <div>
-                                <p style={{ textAlign: "left", fontSize: ".5em" }}>There are {parks.length} National Parks in {parkState.toUpperCase()}</p>
+                                <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
                                 <div className="parkGrid">
                                     {parks.map(
                                         ({

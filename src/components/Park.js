@@ -1,6 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const ParkCard = styled.div`
+    font-size: .5em;
+    width: 20vw;
+    text-align: left;
+    border: solid 1px white;
+    border-radius: .25em;
+    padding: 2em;
+    background-color: #E2E8F0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+`
+
 function Park({
     id,
     description,
@@ -16,15 +27,7 @@ function Park({
     weatherInfo
 }) {
     return (
-        <div style={{
-            fontSize: ".5em",
-            width: "450px",
-            textAlign: "left",
-            border: "solid 1px white",
-            borderRadius: ".25em",
-            padding: "2em",
-            backgroundColor: "hsl(172, 5%, 50%)"
-        }}>
+        <ParkCard>
             <h3>{name}</h3>
             <p>{designation}</p>
             <p>{description}</p>
@@ -32,7 +35,7 @@ function Park({
             <p>{latLong}</p>
             <p>{weatherInfo}</p>
             <a href={url} > {name}</a >
-        </div >
+        </ParkCard >
     )
 }
 
