@@ -22,6 +22,16 @@ const NavBar = styled.div`
     color: #EDF2F7;
 `
 
+const NavLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 10px 15px 10px 15px;
+  background-color: hsl(211, 81%, 46%);
+  margin-left: 50px;
+  border-radius: 3px;
+`;
+
 const Navbar = () => (
     <NavContainer
     >
@@ -31,30 +41,9 @@ const Navbar = () => (
             <h4>Explore our National Parks through the data they provide</h4>
             <nav
             >
-                <Link style={{
-                    color: "white",
-                    textDecoration: "none",
-                    border: "1px solid white",
-                    padding: "10px 15px 10px 15px",
-                    backgroundColor: "hsl(211, 81%, 46%)",
-                    marginLeft: "50px"
-                }} to="/">Explore</Link>
-                <Link style={{
-                    color: "white",
-                    textDecoration: "none",
-                    border: "1px solid white",
-                    padding: "10px 15px 10px 15px",
-                    backgroundColor: "hsl(211, 81%, 46%)",
-                    marginLeft: "50px"
-                }} to="favorites">Favorites</Link>
-                <Link style={{
-                    color: "white",
-                    textDecoration: "none",
-                    border: "1px solid white",
-                    padding: "10px 15px 10px 15px",
-                    backgroundColor: "hsl(211, 81%, 46%)",
-                    marginLeft: "50px"
-                }} to="tasks">Tasks</Link>
+                <NavLink to="/">Explore</NavLink>
+                <NavLink to="favorites">Favorites</NavLink>
+                <NavLink to="tasks">Tasks</NavLink>
             </nav>
         </NavBar>
         <Router>
