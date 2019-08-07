@@ -11,6 +11,11 @@ margin: .25em;
 padding: 0.25em 1em;
 border: 1px solid #CBD5E0;
 border-radius: 3px;
+&:hover {
+    background-color: #2D3748;
+    color: white;
+  }
+
 `;
 
 export default Button;
