@@ -24,7 +24,6 @@ const Tasks = () => (
             </a>
         <Ul>
             To Do List:
-            <li>Remove padding from NavBar</li>
             <li>Indicate active state button</li>
             <li>Display the events for a park</li>
             <li>Display the lesson plans for a park</li>
@@ -33,6 +32,7 @@ const Tasks = () => (
             <li>Use a Styled Comoponents' Theme Provider to set global style variables like border radius and colors</li>
             <li>Allow user to specify "favorite" parks</li>
             <li>Create view for favorited parks</li>
+            <Done>Remove padding from NavBar</Done>
             <Done>Separate page content from nav bar</Done>
             <Done>Use Styled Components to style the site</Done>
             <Done>Display a list of parks for a given state</Done>
