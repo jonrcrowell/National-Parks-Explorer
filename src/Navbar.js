@@ -9,14 +9,12 @@ import Tasks from './components/Tasks'
 const NavContainer = styled.div`
     display: block;
     text-align: center;
-    padding: 10px;
-    background-color: hsl(211, 81%, 36%);
     margin: -8px;
-    margin-right: 20px;
-`
+    `
 
 const NavBar = styled.div`
     display: grid;
+    background-color: hsl(211, 81%, 36%);
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     color: #EDF2F7;
