@@ -14,13 +14,28 @@ const Navbar = () => (
             margin: "-8px -8px 20px -8px"
         }}
     >
-        <div className="navbar">
+        <div
+            style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                alignItems: "center",
+            }} className="navbar">
             <h1>National Park Explorer</h1>
             <h4>Explore our National Parks through the data they provide</h4>
-            <nav>
-                <Link to="/">Explore</Link>
-                <Link to="favorites">Favorites</Link>
-                <Link to="tasks">Tasks</Link>
+            <nav
+                style={{
+                    display: "flex",
+                    marginLeft: "50px"
+                }}>
+                <Link style={{
+                    marginLeft: "50px"
+                }} to="/">Explore</Link>
+                <Link style={{
+                    marginLeft: "50px"
+                }} to="favorites">Favorites</Link>
+                <Link style={{
+                    marginLeft: "50px"
+                }} to="tasks">Tasks</Link>
             </nav>
         </div>
         <Router>
