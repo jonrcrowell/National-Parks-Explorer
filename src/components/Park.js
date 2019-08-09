@@ -5,10 +5,10 @@ const ParkCard = styled.div`
     font-size: .5em;
     width: 20vw;
     text-align: left;
-    border: solid 1px white;
+    border: solid 1px #E2E8F0;
     border-radius: .25em;
     padding: 2em;
-    background-color: #E2E8F0;
+    background-color: white;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 `
 
