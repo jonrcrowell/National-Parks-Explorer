@@ -5,6 +5,7 @@ import "../App.css";
 import stateAbbreviations from '../stateAbbreviations'
 import Button from './Button'
 import Park from './Park'
+import ParkTitle from "./ParkTitle";
 
 const Title = styled.p`
     text-align: left;
@@ -44,6 +45,21 @@ function Explore() {
                     ) : (
                             <div>
                                 <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
+                                <div className="parkList">
+                                    {parks.map(
+                                        ({
+                                            id,
+                                            name,
+                                            designation
+                                        }) => (
+                                                <ParkTitle
+                                                    key={id}
+                                                    name={name}
+                                                    designation={designation}
+                                                ></ParkTitle>
+                                            )
+                                    )}
+                                </div>
                                 <div className="parkGrid">
                                     {parks.map(
                                         ({
