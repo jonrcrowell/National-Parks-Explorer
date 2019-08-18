@@ -43,6 +43,9 @@ function Explore() {
                     {!parks ? (
                         <p>Searching for parks...</p>
                     ) : (
+                            // change to CSS grid with 1fr for park list and 2fr for selected park
+                            // replace park grid with details for the selected park
+                            // highlight the selected park and have an arrow pointing to the detail
                             <div>
                                 <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
                                 <div className="parkList">
@@ -60,6 +63,7 @@ function Explore() {
                                             )
                                     )}
                                 </div>
+
                                 <div className="parkGrid">
                                     {parks.map(
                                         ({
