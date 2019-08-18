@@ -63,7 +63,7 @@ function Explore() {
                                             )
                                     )}
                                 </div>
-
+                                {/* Replace all parks with selected park */}
                                 <div className="parkGrid">
                                     {parks.map(
                                         ({
