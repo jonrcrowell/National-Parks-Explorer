@@ -51,7 +51,6 @@ function Explore() {
                     {!parks ? (
                         <p>Searching for parks...</p>
                     ) : (
-                            // change to CSS grid with 1fr for park list and 2fr for selected park
                             // replace park grid with details for the selected park
                             // highlight the selected park and have an arrow pointing to the detail
                             // Need to put the list of parks in a scrollable section so that clicking
