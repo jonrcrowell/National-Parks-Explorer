@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const ParkCard = styled.div`
     font-size: .5em;
-    width: 20vw;
     text-align: left;
     border: solid 1px #E2E8F0;
     border-radius: .25em;

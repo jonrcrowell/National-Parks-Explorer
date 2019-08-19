@@ -13,6 +13,14 @@ const Title = styled.p`
     font-weight: 700;
 `
 
+const ParkLayout = styled.div`
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    grid-template-rows: 1fr; 
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+`
+
 function Explore() {
     const [parkState, updateParkState] = useState("tx");
     const [parks, updateParks] = useState(null);
@@ -51,54 +59,56 @@ function Explore() {
                             // doesn't have to scroll around to see what they've picked
                             <div>
                                 <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
-                                <div className="parkList">
-                                    {parks.map(
-                                        ({
-                                            id,
-                                            name,
-                                            designation
-                                        }) => (
-                                                <ParkTitle
-                                                    key={id}
-                                                    name={name}
-                                                    designation={designation}
-                                                ></ParkTitle>
-                                            )
-                                    )}
-                                </div>
-                                {/* Replace all parks with selected park */}
-                                <div className="parkGrid">
-                                    {parks.map(
-                                        ({
-                                            id,
-                                            description,
-                                            designation,
-                                            directionsInfo,
-                                            directionsUrl,
-                                            fullName,
-                                            latLong,
-                                            name,
-                                            parkCode,
-                                            states,
-                                            url,
-                                            weatherInfo
-                                        }) => (
-                                                <Park key={id}
-                                                    description={description}
-                                                    designation={designation}
-                                                    directionsInfo={directionsInfo}
-                                                    directionsUrl={directionsUrl}
-                                                    fullName={fullName}
-                                                    latLong={latLong}
-                                                    name={name}
-                                                    parkCode={parkCode}
-                                                    states={states}
-                                                    url={url}
-                                                    weatherInfo={weatherInfo}
-                                                ></Park>
-                                            )
-                                    )}
-                                </div>
+                                <ParkLayout className="parklayout">
+                                    <div className="parkList">
+                                        {parks.map(
+                                            ({
+                                                id,
+                                                name,
+                                                designation
+                                            }) => (
+                                                    <ParkTitle
+                                                        key={id}
+                                                        name={name}
+                                                        designation={designation}
+                                                    ></ParkTitle>
+                                                )
+                                        )}
+                                    </div>
+                                    {/* Replace all parks with selected park */}
+                                    <div>
+                                        {parks.map(
+                                            ({
+                                                id,
+                                                description,
+                                                designation,
+                                                directionsInfo,
+                                                directionsUrl,
+                                                fullName,
+                                                latLong,
+                                                name,
+                                                parkCode,
+                                                states,
+                                                url,
+                                                weatherInfo
+                                            }) => (
+                                                    <Park key={id}
+                                                        description={description}
+                                                        designation={designation}
+                                                        directionsInfo={directionsInfo}
+                                                        directionsUrl={directionsUrl}
+                                                        fullName={fullName}
+                                                        latLong={latLong}
+                                                        name={name}
+                                                        parkCode={parkCode}
+                                                        states={states}
+                                                        url={url}
+                                                        weatherInfo={weatherInfo}
+                                                    ></Park>
+                                                )
+                                        )[0]}
+                                    </div>
+                                </ParkLayout>
                             </div>
                         )}
                 </header>
