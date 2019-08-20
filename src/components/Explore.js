@@ -17,13 +17,18 @@ const ParkLayout = styled.div`
     display: grid; 
     grid-template-columns: 1fr 2fr; 
     grid-template-rows: 1fr; 
-    grid-column-gap: 0px;
+    grid-column-gap: 20px;
     grid-row-gap: 0px; 
 `
 
 function Explore() {
     const [parkState, updateParkState] = useState("tx");
     const [parks, updateParks] = useState(null);
+    const [park, updatePark] = useState({
+        id: 1,
+        name: 'Awesome Park',
+        description: "Such a beautiful place. You're gonna love it."
+    });
 
     useEffect(() => {
         const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${
@@ -34,9 +39,16 @@ function Explore() {
         });
     }, [parkState]);
 
-    function handleParkStateClick(e, ab) {
+    function handleParkStateClick(e, abbreviation) {
+        console.log(e)
         updateParks(null);
-        updateParkState(ab);
+        updateParkState(abbreviation);
+    }
+
+    function handleParkClick(e, name) {
+        debugger;
+        console.log(e)
+        updatePark(parks.filter(x => x.name === name));
     }
 
     return (
@@ -70,42 +82,25 @@ function Explore() {
                                                         key={id}
                                                         name={name}
                                                         designation={designation}
+                                                        onClick={e => handleParkClick(e, name)}
                                                     ></ParkTitle>
                                                 )
                                         )}
                                     </div>
-                                    {/* Replace all parks with selected park */}
                                     <div>
-                                        {parks.map(
-                                            ({
-                                                id,
-                                                description,
-                                                designation,
-                                                directionsInfo,
-                                                directionsUrl,
-                                                fullName,
-                                                latLong,
-                                                name,
-                                                parkCode,
-                                                states,
-                                                url,
-                                                weatherInfo
-                                            }) => (
-                                                    <Park key={id}
-                                                        description={description}
-                                                        designation={designation}
-                                                        directionsInfo={directionsInfo}
-                                                        directionsUrl={directionsUrl}
-                                                        fullName={fullName}
-                                                        latLong={latLong}
-                                                        name={name}
-                                                        parkCode={parkCode}
-                                                        states={states}
-                                                        url={url}
-                                                        weatherInfo={weatherInfo}
-                                                    ></Park>
-                                                )
-                                        )[0]}
+                                        <Park key={park.id}
+                                            description={park.description}
+                                            designation={park.designation}
+                                            directionsInfo={park.directionsInfo}
+                                            directionsUrl={park.directionsUrl}
+                                            fullName={park.fullName}
+                                            latLong={park.latLong}
+                                            name={park.name}
+                                            parkCode={park.parkCode}
+                                            states={park.states}
+                                            url={park.url}
+                                            weatherInfo={park.weatherInfo}
+                                        ></Park>
                                     </div>
                                 </ParkLayout>
                             </div>

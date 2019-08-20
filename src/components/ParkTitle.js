@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const ParkCard = styled.div`
     display: flex;
     font-size: .35em;
+    cursor: pointer;
     width: 25vw;
     text-align: left;
     border: solid 1px #E2E8F0;
