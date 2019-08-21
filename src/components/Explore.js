@@ -15,6 +15,7 @@ const Title = styled.p`
 
 const ParkLayout = styled.div`
     display: grid; 
+    width: 80vw;
     grid-template-columns: 1fr 2fr; 
     grid-template-rows: 1fr; 
     grid-column-gap: 20px;
@@ -66,7 +67,6 @@ function Explore() {
                     {!parks ? (
                         <p>Searching for parks...</p>
                     ) : (
-                            // replace park grid with details for the selected park
                             // highlight the selected park and have an arrow pointing to the detail
                             // Need to put the list of parks in a scrollable section so that clicking
                             // one will always display the park's details to the right so that the use
