@@ -33,7 +33,9 @@ function Park({
             <p>{directionsInfo}</p>
             <p>{latLong}</p>
             <p>{weatherInfo}</p>
-            <a href={url} > {name}</a >
+            {url ? <a href={url} > {name}</a >
+                : <p></p>
+            }
         </ParkCard >
     )
 }

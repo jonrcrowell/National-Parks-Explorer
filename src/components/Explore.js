@@ -26,8 +26,8 @@ function Explore() {
     const [parks, updateParks] = useState(null);
     const [park, updatePark] = useState({
         id: 1,
-        name: 'Awesome Park',
-        description: "Such a beautiful place. You're gonna love it."
+        name: 'Pick a Park',
+        description: "Click on any of the parks in the list to the left for more details."
     });
 
     useEffect(() => {
@@ -43,12 +43,15 @@ function Explore() {
         console.log(e)
         updateParks(null);
         updateParkState(abbreviation);
+        updatePark({
+            id: 1,
+            name: 'Pick a Park',
+            description: "Click on any of the parks in the list to the left for more details."
+        })
     }
 
     function handleParkClick(e, name) {
-        debugger;
-        console.log(e)
-        updatePark(parks.filter(x => x.name === name));
+        updatePark(parks.filter(x => x.name === name)[0]);
     }
 
     return (

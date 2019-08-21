@@ -25,12 +25,12 @@ const ParkDesignation = styled.span`
 `
 
 function ParkTitle({
-
+    onClick,
     designation,
     name
 }) {
     return (
-        <ParkCard>
+        <ParkCard onClick={onClick}>
             <h3>
                 <ParkName>{name}</ParkName>
                 <ParkDesignation>{designation}</ParkDesignation>
