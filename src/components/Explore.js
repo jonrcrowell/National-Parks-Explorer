@@ -67,33 +67,37 @@ function Explore() {
                         <ParkLayout className="parklayout">
                             <div className="parkList">
                                 {parks.map(
-                                  ({
-                                       id,
-                                       name,
-                                       designation
-                                   }) => (
-                                    <ParkTitle
-                                      key={id}
-                                      name={name}
-                                      designation={designation}
-                                      onClick={e => handleParkClick(e, name)}
-                                    ></ParkTitle>
-                                  )
+                                    ({
+                                        id,
+                                        name,
+                                        designation
+                                    }) => (
+                                            // TODO added on 8/22/2019 by Jon: highlight the selected park and have an arrow pointing to the detail
+                                            // TODO Need to put the list of parks in a scrollable section so that clicking
+                                            // TODO one will always display the park's details to the right so that the use
+                                            // TODO doesn't have to scroll around to see what they've picked
+                                            <ParkTitle
+                                                key={id}
+                                                name={name}
+                                                designation={designation}
+                                                onClick={e => handleParkClick(e, name)}
+                                            ></ParkTitle>
+                                        )
                                 )}
                             </div>
                             <div>
                                 <Park key={park.id}
-                                      description={park.description}
-                                      designation={park.designation}
-                                      directionsInfo={park.directionsInfo}
-                                      directionsUrl={park.directionsUrl}
-                                      fullName={park.fullName}
-                                      latLong={park.latLong}
-                                      name={park.name}
-                                      parkCode={park.parkCode}
-                                      states={park.states}
-                                      url={park.url}
-                                      weatherInfo={park.weatherInfo}
+                                    description={park.description}
+                                    designation={park.designation}
+                                    directionsInfo={park.directionsInfo}
+                                    directionsUrl={park.directionsUrl}
+                                    fullName={park.fullName}
+                                    latLong={park.latLong}
+                                    name={park.name}
+                                    parkCode={park.parkCode}
+                                    states={park.states}
+                                    url={park.url}
+                                    weatherInfo={park.weatherInfo}
                                 ></Park>
                             </div>
                         </ParkLayout>
