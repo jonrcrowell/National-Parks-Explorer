@@ -11,7 +11,7 @@ const Title = styled.p`
     text-align: left;
     font-size: .5em;
     font-weight: 700;
-`
+`;
 
 const ParkLayout = styled.div`
     display: grid; 
@@ -20,7 +20,7 @@ const ParkLayout = styled.div`
     grid-template-rows: 1fr; 
     grid-column-gap: 20px;
     grid-row-gap: 0px; 
-`
+`;
 
 function Explore() {
     const [parkState, updateParkState] = useState("tx");
@@ -59,55 +59,45 @@ function Explore() {
         <div>
             <div className="App">
                 <header className="App-header">
-
-
                     <div className="parent">
                         {stateAbbreviations.map(ab => <Button active={false} key={ab} onClick={e => handleParkStateClick(e, ab)}>{ab}</Button>)}
                     </div>
-                    {!parks ? (
-                        <p>Searching for parks...</p>
-                    ) : (
-                            // highlight the selected park and have an arrow pointing to the detail
-                            // Need to put the list of parks in a scrollable section so that clicking
-                            // one will always display the park's details to the right so that the use
-                            // doesn't have to scroll around to see what they've picked
-                            <div>
-                                <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
-                                <ParkLayout className="parklayout">
-                                    <div className="parkList">
-                                        {parks.map(
-                                            ({
-                                                id,
-                                                name,
-                                                designation
-                                            }) => (
-                                                    <ParkTitle
-                                                        key={id}
-                                                        name={name}
-                                                        designation={designation}
-                                                        onClick={e => handleParkClick(e, name)}
-                                                    ></ParkTitle>
-                                                )
-                                        )}
-                                    </div>
-                                    <div>
-                                        <Park key={park.id}
-                                            description={park.description}
-                                            designation={park.designation}
-                                            directionsInfo={park.directionsInfo}
-                                            directionsUrl={park.directionsUrl}
-                                            fullName={park.fullName}
-                                            latLong={park.latLong}
-                                            name={park.name}
-                                            parkCode={park.parkCode}
-                                            states={park.states}
-                                            url={park.url}
-                                            weatherInfo={park.weatherInfo}
-                                        ></Park>
-                                    </div>
-                                </ParkLayout>
+                    {!parks ? <p>Searching for parks...</p> : <div>
+                        <Title>There are {parks.length} National Parks in {parkState.toUpperCase()}</Title>
+                        <ParkLayout className="parklayout">
+                            <div className="parkList">
+                                {parks.map(
+                                  ({
+                                       id,
+                                       name,
+                                       designation
+                                   }) => (
+                                    <ParkTitle
+                                      key={id}
+                                      name={name}
+                                      designation={designation}
+                                      onClick={e => handleParkClick(e, name)}
+                                    ></ParkTitle>
+                                  )
+                                )}
                             </div>
-                        )}
+                            <div>
+                                <Park key={park.id}
+                                      description={park.description}
+                                      designation={park.designation}
+                                      directionsInfo={park.directionsInfo}
+                                      directionsUrl={park.directionsUrl}
+                                      fullName={park.fullName}
+                                      latLong={park.latLong}
+                                      name={park.name}
+                                      parkCode={park.parkCode}
+                                      states={park.states}
+                                      url={park.url}
+                                      weatherInfo={park.weatherInfo}
+                                ></Park>
+                            </div>
+                        </ParkLayout>
+                    </div>}
                 </header>
             </div >
         </div>
