@@ -63,7 +63,7 @@ function Explore() {
             {/* Why is the default state (TX) not active when the page first loads? */}
             {stateAbbreviations.map(ab => (
               <Button
-                active={false}
+                active={ab === parkState}
                 key={ab}
                 onClick={e => handleParkStateClick(e, ab)}
               >
