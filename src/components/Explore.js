@@ -23,9 +23,9 @@ const ParkLayout = styled.div`
 `;
 
 function Explore() {
-  const [parkState, updateParkState] = useState("tx");
-  const [parks, updateParks] = useState(null);
-  const [park, updatePark] = useState({
+  const [parkState, setParkState] = useState("TX");
+  const [parks, setParks] = useState(null);
+  const [park, setPark] = useState({
     id: 1,
     name: "Pick a Park",
     description:
