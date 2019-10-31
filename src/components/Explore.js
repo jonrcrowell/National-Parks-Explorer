@@ -51,7 +51,7 @@ function Explore() {
   }
 
   function handleParkClick(e, name) {
-    updatePark(parks.filter(x => x.name === name)[0]);
+    setPark(parks.filter(x => x.name === name)[0]);
   }
 
   return (
@@ -59,12 +59,11 @@ function Explore() {
       <div className="App">
         <header className="App-header">
           <div className="parent">
-            {/* Why is the default state (TX) not active when the page first loads? */}
             {stateAbbreviations.map(ab => (
               <Button
                 active={ab === parkState}
                 key={ab}
-                onClick={e => handleParkStateClick(e, ab)}
+                onClick={e => handleParkStateClick(ab)}
               >
                 {ab}
               </Button>

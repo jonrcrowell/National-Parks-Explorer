@@ -24,7 +24,6 @@ const Tasks = () => (
     </a>
     <Ul>
       To Do List:
-      <li>Indicate active state button for default</li>
       <li>Display the events for a park</li>
       <li>Display the lesson plans for a park</li>
       <li>Display visitor center information for a park</li>
@@ -39,6 +38,7 @@ const Tasks = () => (
         Consider storing data in my own db to speed up queries and update
         periodically with a service
       </li>
+      <Done>Indicate active state button for default</Done>
       <Done>Integrate Logrocket</Done>
       <Done>Remove padding from NavBar</Done>
       <Done>Separate page content from nav bar</Done>
