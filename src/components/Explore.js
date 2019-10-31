@@ -35,15 +35,14 @@ function Explore() {
   useEffect(() => {
     const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${process.env.REACT_APP_API_KEY}`;
     axios.get(parksUrl).then(response => {
-      updateParks(response.data.data);
+      setParks(response.data.data);
     });
   }, [parkState]);
 
-  function handleParkStateClick(e, abbreviation) {
-    console.log(e);
-    updateParks(null);
-    updateParkState(abbreviation);
-    updatePark({
+  function handleParkStateClick(abbreviation) {
+    setParks(null);
+    setParkState(abbreviation);
+    setPark({
       id: 1,
       name: "Pick a Park",
       description:
