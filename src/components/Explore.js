@@ -34,9 +34,19 @@ function Explore() {
 
   useEffect(() => {
     const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${process.env.REACT_APP_API_KEY}`;
-    axios.get(parksUrl).then(response => {
-      setParks(response.data.data);
-    });
+
+    const parksData = null;
+
+    axios
+      .get(parksUrl)
+      .then(response => {
+        parksData = response.data.data;
+      })
+      .catch(e => {
+        console.error(e);
+      });
+
+    setParks(parksData);
   }, [parkState]);
 
   function handleParkStateClick(abbreviation) {
