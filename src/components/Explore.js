@@ -34,6 +34,7 @@ function Explore() {
 
   useEffect(() => {
     const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${process.env.REACT_APP_API_KEY}`;
+
     let parksData = null;
 
     axios
