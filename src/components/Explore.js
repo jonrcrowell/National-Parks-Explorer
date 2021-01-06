@@ -29,24 +29,22 @@ function Explore() {
     id: 1,
     name: "Pick a Park",
     description:
-      "Click on any of the parks in the list to the left for more details."
+      "Click on any of the parks in the list to the left for more details.",
   });
 
   useEffect(() => {
     const parksUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkState}&api_key=${process.env.REACT_APP_API_KEY}`;
-
-    const parksData = null;
+    let parksData = null;
 
     axios
       .get(parksUrl)
-      .then(response => {
+      .then((response) => {
         parksData = response.data.data;
+        setParks(parksData);
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(e);
       });
-
-    setParks(parksData);
   }, [parkState]);
 
   function handleParkStateClick(abbreviation) {
@@ -56,12 +54,12 @@ function Explore() {
       id: 1,
       name: "Pick a Park",
       description:
-        "Click on any of the parks in the list to the left for more details."
+        "Click on any of the parks in the list to the left for more details.",
     });
   }
 
   function handleParkClick(e, name) {
-    setPark(parks.filter(x => x.name === name)[0]);
+    setPark(parks.filter((x) => x.name === name)[0]);
   }
 
   return (
@@ -69,11 +67,11 @@ function Explore() {
       <div className="App">
         <header className="App-header">
           <div className="parent">
-            {stateAbbreviations.map(ab => (
+            {stateAbbreviations.map((ab) => (
               <Button
                 active={ab === parkState}
                 key={ab}
-                onClick={e => handleParkStateClick(ab)}
+                onClick={(e) => handleParkStateClick(ab)}
               >
                 {ab}
               </Button>
@@ -98,7 +96,7 @@ function Explore() {
                       key={id}
                       name={name}
                       designation={designation}
-                      onClick={e => handleParkClick(e, name)}
+                      onClick={(e) => handleParkClick(e, name)}
                     ></ParkTitle>
                   ))}
                 </div>
